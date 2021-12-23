@@ -1,9 +1,6 @@
 class EventBlock {
 
-    options = {
-        rootMargin: '-10%',
-        threshold: 0.25
-    };
+
 
     titleRef = {
         domEle: null,
@@ -43,9 +40,6 @@ class EventBlock {
         this.createElements();
 
         this.elementRefs = [this.titleRef, this.imgRef, this.dataRef, this.linkRef];
-
-        this.observer = new IntersectionObserver(this.callback, this.options);
-        this.observer.observe(this.eventRef);
     }
 
     createElements = () => {
@@ -108,14 +102,4 @@ class EventBlock {
             element.domEle.classList.remove(element.shownClass);
         });
     }
-
-    callback = (entries, observer) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                this.triggerAnimation();
-            }else{
-                this.triggerAnimationOut();
-            }
-        });
-    };
 }
