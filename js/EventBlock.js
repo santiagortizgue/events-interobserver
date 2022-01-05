@@ -54,7 +54,7 @@ class EventBlock {
         //img
         this.imgRef.domEle = document.createElement("img");
         this.imgRef.domEle.setAttribute("class", "App__eventImage");
-        this.imgRef.domEle.src = './src/img/data/0.jpg';
+        this.imgRef.domEle.src = `./src/img/data/${this.id}.jpg`;
         //data
         this.dataRef.domEle = document.createElement("p");
         this.dataRef.domEle.setAttribute("class", "App__eventData");

@@ -20,14 +20,32 @@ body{
 
         position: relative;
 
-        display: flex;
-        align-items: center;
-        align-self: center;
-        justify-content: center;
+        display: grid;
+        grid-template-rows: auto 1fr;
 
         background-image: url('../src/img/header.jpg');
         background-position: center;
         background-size: cover;
+
+
+
+
+    }
+
+    &__heroFilter{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        position: absolute;
+        background-color: rgba($color: $color-black, $alpha: 0.9);
+    }
+
+    &__header{
+        width: 100%;
+        height: fit-content;
+        z-index: 1;
+
+        padding: 40px;
 
         >h3{
             font-size: 32px;
@@ -37,11 +55,24 @@ body{
         }
     }
 
-    &__heroFilter{
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        background-color: rgba($color: $color-black, $alpha: 0.9);
+    &__heroContent{
+        z-index: 1;
+        padding: 40px;
+
+        display: flex;
+
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        >p{
+            color: $color-white;
+
+            font-family: $font-text;
+            font-size: 20px;
+
+            text-align: center;
+        }
     }
 
     /*EVENT*/
