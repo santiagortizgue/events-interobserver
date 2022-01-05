@@ -1,7 +1,5 @@
 class EventBlock {
 
-
-
     titleRef = {
         domEle: null,
         shownClass: "App__eventTitle--show",
@@ -30,10 +28,10 @@ class EventBlock {
         delay: 0
     };
 
-    constructor(containerRef, title, id, link){
+    constructor(containerRef, title, id, data, link){
         this.title = title;
         this.id = id;
-        this.data = "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius itaque rerum, ad dolor id earum corrupti nemo? Illo inventore, error molestias, tempora suscipit, at distinctio tenetur optio impedit quis itaque?";
+        this.data = data;
         this.link = link;
         this.containerRef = containerRef;
 
@@ -43,9 +41,12 @@ class EventBlock {
     }
 
     createElements = () => {
-        //container
+        //event
         this.eventRef = document.createElement("section");
         this.eventRef.setAttribute("class", "App__event");
+        //container
+        this.eventContainerRef = document.createElement("div");
+        this.eventContainerRef.setAttribute("class", "App__eventContainer");
         //title
         this.titleRef.domEle = document.createElement("h3");
         this.titleRef.domEle.setAttribute("class", "App__eventTitle");
@@ -53,11 +54,11 @@ class EventBlock {
         //img
         this.imgRef.domEle = document.createElement("img");
         this.imgRef.domEle.setAttribute("class", "App__eventImage");
-        this.imgRef.domEle.src = './src/img/events/0.jpg';
+        this.imgRef.domEle.src = './src/img/data/0.jpg';
         //data
         this.dataRef.domEle = document.createElement("p");
         this.dataRef.domEle.setAttribute("class", "App__eventData");
-        this.dataRef.domEle.innerHTML = "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius itaque rerum, ad dolor id earum corrupti nemo? Illo inventore, error molestias, tempora suscipit, at distinctio tenetur optio impedit quis itaque?";
+        this.dataRef.domEle.innerHTML = this.data;
         //link
         this.linkRef.domEle = document.createElement("a");
         this.linkRef.domEle.setAttribute("class", "App__eventLink");
@@ -65,10 +66,11 @@ class EventBlock {
         this.linkRef.domEle.innerHTML = "See more";
 
         //append elements to new event
-        this.eventRef.appendChild(this.imgRef.domEle);
-        this.eventRef.appendChild(this.titleRef.domEle);
-        this.eventRef.appendChild(this.dataRef.domEle);
-        this.eventRef.appendChild(this.linkRef.domEle);
+        this.eventContainerRef.appendChild(this.imgRef.domEle);
+        this.eventContainerRef.appendChild(this.titleRef.domEle);
+        this.eventContainerRef.appendChild(this.dataRef.domEle);
+        this.eventContainerRef.appendChild(this.linkRef.domEle);
+        this.eventRef.appendChild(this.eventContainerRef);
 
         //append new event
         this.containerRef.appendChild(this.eventRef);
