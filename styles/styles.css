@@ -13,6 +13,7 @@ body {
 .App {
   /*HERO*/
   /*EVENT*/
+  /*GALLERY*/
   /*FOOTER*/
 }
 
@@ -96,6 +97,7 @@ body {
 }
 
 .App__event {
+  overflow: hidden;
   max-width: 100%;
   padding: 80px 0;
   display: -ms-grid;
@@ -238,6 +240,38 @@ body {
 .App__eventLink--show {
   -webkit-transform: translateY(0);
           transform: translateY(0);
+}
+
+.App__gallery {
+  width: 100%;
+  height: auto;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[12];
+      grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+  padding: 80px 0;
+  background-color: #07010F;
+}
+
+.App__galleryContainer {
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 8;
+  grid-column: 3 / span 8;
+  height: auto;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(300px, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-auto-rows: auto;
+  grid-auto-flow: row dense;
+  gap: 20px;
+}
+
+.App__galleryItem {
+  grid-column: span 1;
+  grid-row: span 1;
+  place-self: stretch;
 }
 
 .App__footer {

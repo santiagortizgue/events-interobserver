@@ -33,16 +33,17 @@ let eventsData = [
     }
 ];
 
-let MAX_EVENTS = 7;
-
 const options = {
     rootMargin: '20% 0px 20% 0px',
     threshold: 0.5
 };
 
-callback = (entries, observer) => {
+let callback = (entries, observer) => {
     entries.forEach((entry) => {
+        // performance issue here
+        // need to filter which dom element is intersecting and trigger the animation of that element
         let entryRef = eventsList.filter(element => element.eventRef === entry.target)[0];
+        //
         if (entry.isIntersecting) {
             entryRef.triggerAnimation();
         }else{
@@ -53,10 +54,8 @@ callback = (entries, observer) => {
 
 let observer = new IntersectionObserver(callback, options);
 
-for (let index = 0; index < eventsData.length; index++) {
-    let info = eventsData[index];
-
-    let newEvent = new EventBlock(containerRef, info.title, info.id, info.data, "#");
-    observer.observe(newEvent.eventRef);
+eventsData.forEach((event)=>{
+    let newEvent = new EventBlock(containerRef, event.title, event.id, event.data, "#");
     eventsList.push(newEvent);
-}
+    observer.observe(newEvent.eventRef);
+});

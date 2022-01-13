@@ -88,6 +88,7 @@ body{
     }
 
     &__event{
+        overflow: hidden;
         max-width: 100%;
         padding: 80px 0;
 
@@ -195,6 +196,37 @@ body{
         &--show{
             transform: translateY(0);
         }
+    }
+
+    /*GALLERY*/
+
+    &__gallery{
+        width: 100%;
+        height: auto;
+
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 20px;
+
+        padding: 80px 0;
+        background-color: $color-black;
+    }
+
+    &__galleryContainer{
+        grid-column: 3 / span 8;
+        height: auto;
+
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-auto-rows: auto;
+        grid-auto-flow: row dense;
+        gap: 20px;
+    }
+
+    &__galleryItem{
+        grid-column: span 1;
+        grid-row: span 1;
+        place-self: stretch;
     }
 
     /*FOOTER*/
