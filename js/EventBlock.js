@@ -72,6 +72,8 @@ class EventBlock {
         this.eventContainerRef.appendChild(this.linkRef.domEle);
         this.eventRef.appendChild(this.eventContainerRef);
 
+        this.ref = this.eventRef;
+
         //append new event
         this.containerRef.appendChild(this.eventRef);
     }

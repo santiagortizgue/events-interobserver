@@ -1,6 +1,5 @@
 const containerRef = document.querySelector('.App__events');
 
-let eventsList = [];
 let eventsData = [
     {
         title: 'eSports Club: KOI',
@@ -33,29 +32,8 @@ let eventsData = [
     }
 ];
 
-const options = {
-    rootMargin: '20% 0px 20% 0px',
-    threshold: 0.5
-};
-
-let callback = (entries, observer) => {
-    entries.forEach((entry) => {
-        // performance issue here
-        // need to filter which dom element is intersecting and trigger the animation of that element
-        let entryRef = eventsList.filter(element => element.eventRef === entry.target)[0];
-        //
-        if (entry.isIntersecting) {
-            entryRef.triggerAnimation();
-        }else{
-            entryRef.triggerAnimationOut();
-        }
-    });
-};
-
-let observer = new IntersectionObserver(callback, options);
-
 eventsData.forEach((event)=>{
     let newEvent = new EventBlock(containerRef, event.title, event.id, event.data, "#");
-    eventsList.push(newEvent);
-    observer.observe(newEvent.eventRef);
+    singletonObserver.observe(newEvent);
 });
+
